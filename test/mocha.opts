@@ -1,0 +1,4 @@
+--reporter dot
+--ui tdd
+--timeout 10000
+--require ./scripts/babel-register.js
