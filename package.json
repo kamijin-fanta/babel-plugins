@@ -5,20 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env CI=true mocha ./packages/*/test",
+    "test-watch": "watch -p \"packages/**/*.js\" -c \"yarn run test\"",
     "test-init": "mocha ./packages/*/test"
   },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "keywords": [],
   "author": "kamijin_fanta <kamijin@live.jp>",
   "license": "MIT",
   "devDependencies": {
-    "babel-plugin-istanbul": "^4.1.5",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "babel-runtime": "^6.26.0",
+    "babel-plugin-transform-runtime": "^7.0.0-beta.3",
+    "babel-preset-env": "^7.0.0-beta.3",
+    "babel-register": "^7.0.0-beta.3",
+    "babel-runtime": "^7.0.0-beta.3",
     "cross-env": "^5.1.1",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "watch-cli": "^0.2.3"
   }
 }
