@@ -16,10 +16,10 @@
   "author": "kamijin_fanta <kamijin@live.jp>",
   "license": "MIT",
   "devDependencies": {
-    "babel-plugin-transform-runtime": "^7.0.0-beta.3",
-    "babel-preset-env": "^7.0.0-beta.3",
-    "babel-register": "^7.0.0-beta.3",
-    "babel-runtime": "^7.0.0-beta.3",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "@babel/register": "^7.0.0-beta.32",
+    "@babel/runtime": "^7.0.0-beta.32",
     "cross-env": "^5.1.1",
     "mocha": "^4.0.1",
     "watch-cli": "^0.2.3"

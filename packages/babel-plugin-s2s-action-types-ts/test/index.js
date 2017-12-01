@@ -1,4 +1,4 @@
-const testRunner = require("babel-helper-transform-fixture-test-runner");
+import testRunner from "@babel/helper-transform-fixture-test-runner";
 const path = require("path");
 
 const loc = __dirname;
