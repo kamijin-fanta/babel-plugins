@@ -7,9 +7,9 @@ export interface Response {
 }
 
 /***** Do not edit below this line *****/
-export const FETCH = "FETCH";
+export const FETCH = "examples/create-actions/FETCH";
 export type FETCH = typeof FETCH;
-export const RESPONSE = "RESPONSE";
+export const RESPONSE = "examples/create-actions/RESPONSE";
 export type RESPONSE = typeof RESPONSE;
 export const Actions = {
   FETCH,

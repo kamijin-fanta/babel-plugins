@@ -9,11 +9,13 @@
   "keywords": [],
   "author": "kamijin_fanta <kamijin@live.jp>",
   "license": "MIT",
-  "devDependencies": {
-    "@babel/helper-plugin-test-runner": "^7.0.0-beta.32",
+  "dependencies": {
     "@babel/plugin-syntax-typescript": "^7.0.0-beta.32",
     "@babel/template": "^7.0.0-beta.32",
     "@babel/types": "^7.0.0-beta.32",
     "slash": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/helper-plugin-test-runner": "^7.0.0-beta.32"
   }
 }

@@ -59,14 +59,6 @@ function interfaceGen(name, fields) {
   );
 }
 
-function constGen(name, typeName) {
-  // output like: export type name = typeof typeName;
-  builders.constant({
-    NAME: types.Identifier(name),
-    VALUE: types.StringLiteral(typeName),
-  });
-}
-
 // ///// utils
 function toTypeName(str) {
   return str.toUpperCase();
@@ -88,6 +80,8 @@ export default (babel) => {
           let actionsNode = [];
           const typeNameSet = new Set();
           const intMap = new Map(); // has interfaces
+          const prefix = usePrefix ? getPrefix(file, removePrefix) : '';
+          console.log('# prefix', prefix);
 
           function addTypes(typeName) {
             const name = typeName.name;
@@ -97,10 +91,6 @@ export default (babel) => {
               typeNameSet.add(name.replace(/Request$/, 'Failure'));
             }
           }
-
-          // console.log('#Program exit', programPath.node.body)
-          // console.log('#file', getPrefix(file, removePrefix));
-
 
           // collect exist type infomation
           programPath.traverse({
@@ -152,7 +142,7 @@ export default (babel) => {
             return [
               builders.constant({
                 NAME: types.Identifier(toTypeName(name)),
-                VALUE: types.StringLiteral(toTypeName(name)),
+                VALUE: types.StringLiteral(prefix + toTypeName(name)),
               }),
               builders.typeAlias({
                 NAME: types.Identifier(toTypeName(name)),
