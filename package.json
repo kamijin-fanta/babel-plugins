@@ -7,7 +7,7 @@
     "build": "node scripts/build.js",
     "lint": "eslint . --fix",
     "test": "cross-env CI=true mocha ./packages/*/test",
-    "test-watch": "watch -p \"packages/**/*.js\" -c \"yarn run test\"",
+    "test-watch": "watch -p \"packages/*/+(src|test)/**/*.js\" -c \"yarn run test\"",
     "test-init": "mocha ./packages/*/test"
   },
   "private": true,
