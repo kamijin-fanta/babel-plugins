@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "node scripts/build.js",
     "test": "cross-env CI=true mocha ./packages/*/test",
     "test-watch": "watch -p \"packages/**/*.js\" -c \"yarn run test\"",
     "test-init": "mocha ./packages/*/test"
@@ -16,12 +17,16 @@
   "author": "kamijin_fanta <kamijin@live.jp>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.32",
     "@babel/preset-env": "^7.0.0-beta.32",
     "@babel/register": "^7.0.0-beta.32",
     "@babel/runtime": "^7.0.0-beta.32",
     "cross-env": "^5.1.1",
+    "globby": "^7.1.1",
+    "mkdirp": "^0.5.1",
     "mocha": "^4.0.1",
+    "rimraf": "^2.6.2",
     "watch-cli": "^0.2.3"
   }
 }

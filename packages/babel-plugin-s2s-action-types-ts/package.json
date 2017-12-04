@@ -1,11 +1,9 @@
 {
   "name": "babel-plugin-s2s-action-types-ts",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "generate action types",
+  "main": "lib/index.js",
+  "files": ["lib"],
   "keywords": [],
   "author": "kamijin_fanta <kamijin@live.jp>",
   "license": "MIT",
