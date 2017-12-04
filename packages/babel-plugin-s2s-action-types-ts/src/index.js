@@ -74,14 +74,12 @@ export default (babel) => {
       Program: {
         exit(programPath, state) {
           const {file, opts: {usePrefix = true, removePrefix = ''}} = state;
-          // todo use options
 
           const imports = [];
           let actionsNode = [];
           const typeNameSet = new Set();
           const intMap = new Map(); // has interfaces
           const prefix = usePrefix ? getPrefix(file, removePrefix) : '';
-          console.log('# prefix', prefix);
 
           function addTypes(typeName) {
             const name = typeName.name;
@@ -91,6 +89,9 @@ export default (babel) => {
               typeNameSet.add(name.replace(/Request$/, 'Failure'));
             }
           }
+
+          console.log('#Program exit', programPath.node.body);
+
 
           // collect exist type infomation
           programPath.traverse({
@@ -168,10 +169,15 @@ export default (babel) => {
             IN: types.ObjectExpression(actionsMembers),
           });
 
+          if (imports.length) {
+            imports.push(types.Noop());
+          }
+
           // modify node tree
           programPath.node.body = [
-            // todo importNodes
+            ...imports,
             ...actionsNode,
+            types.noop(),
             ...interfaces,
             ...flattenConsts,
             actions,

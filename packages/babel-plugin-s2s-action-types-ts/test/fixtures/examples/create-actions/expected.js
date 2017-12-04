@@ -1,4 +1,5 @@
 export type Action = Fetch | Response;
+
 export interface Fetch {
   type: FETCH;
 }

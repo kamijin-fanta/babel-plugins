@@ -1,4 +1,7 @@
+import fs from 'fs';
+
 export type Action = FetchRequest;
+
 export interface FetchRequest {
   type: FETCHREQUEST;
 }

@@ -1,4 +1,5 @@
 export type Action = Foo | Bar | Fuga;
+
 export interface Foo {
   type: FOO;
 }
