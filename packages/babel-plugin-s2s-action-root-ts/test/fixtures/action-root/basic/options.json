@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    ["../../../../src/index.js", {
+      "input": "packages/babel-plugin-s2s-action-root-ts/test/fixtures/action-root/basic/examples/**/actionTypes.ts",
+      "output": "packages/babel-plugin-s2s-action-root-ts/test/fixtures/action-root/basic/types/action.ts"
+    }]
+  ]
+}

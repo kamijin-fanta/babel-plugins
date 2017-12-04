@@ -90,9 +90,6 @@ export default (babel) => {
             }
           }
 
-          console.log('#Program exit', programPath.node.body);
-
-
           // collect exist type infomation
           programPath.traverse({
             ImportDeclaration(path) {

@@ -1,0 +1,23 @@
+{
+  "name": "babel-plugin-s2s-action-root-ts",
+  "version": "1.0.0",
+  "description": "generate action root",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [],
+  "author": "kamijin_fanta <kamijin@live.jp>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-syntax-typescript": "^7.0.0-beta.32",
+    "@babel/template": "^7.0.0-beta.32",
+    "@babel/types": "^7.0.0-beta.32",
+    "globby": "^7.1.1",
+    "s2s-utils": "^0.6.0",
+    "uppercamelcase": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/helper-plugin-test-runner": "^7.0.0-beta.32"
+  }
+}
