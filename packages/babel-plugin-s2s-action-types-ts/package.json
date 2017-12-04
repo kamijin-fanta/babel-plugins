@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "generate action types",
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "keywords": [],
   "author": "kamijin_fanta <kamijin@live.jp>",
   "license": "MIT",

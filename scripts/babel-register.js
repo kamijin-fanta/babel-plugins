@@ -1,9 +1,7 @@
-var babel = require("../package.json").babel;
-var register = require("@babel/register");
-var path = require("path");
+let register = require('@babel/register');
 
 module.exports = register({
-  extensions: [".js"],
+  extensions: ['.js'],
   babelrc: true,
   compact: true,
 });
