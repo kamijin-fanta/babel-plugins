@@ -3,24 +3,24 @@ import fs from 'fs';
 export type Action = FetchRequest;
 
 export interface FetchRequest {
-  type: FETCHREQUEST;
+  type: FETCH_REQUEST;
 }
 export interface FetchSuccess {
-  type: FETCHSUCCESS;
+  type: FETCH_SUCCESS;
 }
 export interface FetchFailure {
-  type: FETCHFAILURE;
+  type: FETCH_FAILURE;
 }
 
 /***** Do not edit below this line *****/
-export const FETCHREQUEST = "examples/request/FETCHREQUEST";
-export type FETCHREQUEST = typeof FETCHREQUEST;
-export const FETCHSUCCESS = "examples/request/FETCHSUCCESS";
-export type FETCHSUCCESS = typeof FETCHSUCCESS;
-export const FETCHFAILURE = "examples/request/FETCHFAILURE";
-export type FETCHFAILURE = typeof FETCHFAILURE;
+export const FETCH_REQUEST = "examples/request/FETCH_REQUEST";
+export type FETCH_REQUEST = typeof FETCH_REQUEST;
+export const FETCH_SUCCESS = "examples/request/FETCH_SUCCESS";
+export type FETCH_SUCCESS = typeof FETCH_SUCCESS;
+export const FETCH_FAILURE = "examples/request/FETCH_FAILURE";
+export type FETCH_FAILURE = typeof FETCH_FAILURE;
 export const Actions = {
-  FETCHREQUEST,
-  FETCHSUCCESS,
-  FETCHFAILURE
+  FETCH_REQUEST,
+  FETCH_SUCCESS,
+  FETCH_FAILURE
 };

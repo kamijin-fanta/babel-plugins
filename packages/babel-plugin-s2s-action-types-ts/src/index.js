@@ -3,6 +3,7 @@ import {relative, join, dirname} from 'path';
 import slash from 'slash';
 import * as types from '@babel/types';
 import template from '@babel/template';
+import snakeCase from 'lodash.snakecase'
 
 const babylonOpts = {sourceType: 'module', plugins: ['typescript']};
 const wrapTemp = (tmpl) => template(tmpl, babylonOpts);
@@ -61,7 +62,7 @@ function interfaceGen(name, fields) {
 
 // ///// utils
 function toTypeName(str) {
-  return str.toUpperCase();
+  return snakeCase(str).toUpperCase();
 }
 
 // ///// plugin
