@@ -8,6 +8,7 @@
   ],
   "keywords": [],
   "author": "kamijin_fanta <kamijin@live.jp>",
+  "repository": "kamijin-fanta/babel-plugins",
   "license": "MIT",
   "dependencies": {
     "@babel/plugin-syntax-typescript": "^7.0.0-beta.32",
