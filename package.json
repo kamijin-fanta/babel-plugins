@@ -6,9 +6,9 @@
   "scripts": {
     "build": "node scripts/build.js",
     "lint": "eslint . --fix",
-    "test": "cross-env CI=true mocha ./packages/*/test",
-    "test-watch": "watch -p \"packages/*/+(src|test)/**/*.+(js|json)\" -c \"yarn run test\"",
-    "test-init": "mocha ./packages/*/test",
+    "test": "jest --watch --coverage",
+    "test:ci": "jest --coverage",
+    "test:update": "jest --updateSnapshot",
     "publish-all": "yarn build && lerna publish"
   },
   "private": true,
@@ -24,15 +24,17 @@
     "@babel/preset-env": "^7.0.0-beta.32",
     "@babel/register": "^7.0.0-beta.32",
     "@babel/runtime": "^7.0.0-beta.32",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.0.3",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-tester": "^5.0.0",
     "cross-env": "^5.1.1",
     "eslint": "^4.12.1",
     "eslint-config-google": "^0.9.1",
     "globby": "^7.1.1",
+    "jest": "^21.2.1",
     "lerna": "^2.5.1",
     "mkdirp": "^0.5.1",
-    "mocha": "^4.0.1",
-    "rimraf": "^2.6.2",
-    "watch-cli": "^0.2.3"
+    "rimraf": "^2.6.2"
   }
 }

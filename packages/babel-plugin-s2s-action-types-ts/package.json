@@ -17,7 +17,5 @@
     "lodash.snakecase": "^4.1.1",
     "slash": "^1.0.0"
   },
-  "devDependencies": {
-    "@babel/helper-plugin-test-runner": "^7.0.0-beta.32"
-  }
+  "devDependencies": {}
 }

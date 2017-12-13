@@ -12,11 +12,11 @@ export interface Fuga {
 }
 
 /***** Do not edit below this line *****/
-export const FOO = "examples/add-action/FOO";
+export const FOO = "add-action/FOO";
 export type FOO = typeof FOO;
-export const BAR = "examples/add-action/BAR";
+export const BAR = "add-action/BAR";
 export type BAR = typeof BAR;
-export const FUGA = "examples/add-action/FUGA";
+export const FUGA = "add-action/FUGA";
 export type FUGA = typeof FUGA;
 export const Actions = {
   FOO,

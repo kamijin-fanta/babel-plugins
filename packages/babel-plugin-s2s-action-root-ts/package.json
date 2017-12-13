@@ -18,7 +18,5 @@
     "s2s-utils": "^0.6.0",
     "uppercamelcase": "^3.0.0"
   },
-  "devDependencies": {
-    "@babel/helper-plugin-test-runner": "^7.0.0-beta.32"
-  }
+  "devDependencies": {}
 }

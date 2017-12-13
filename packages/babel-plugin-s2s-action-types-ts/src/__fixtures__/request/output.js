@@ -13,11 +13,11 @@ export interface FetchFailure {
 }
 
 /***** Do not edit below this line *****/
-export const FETCH_REQUEST = "examples/request/FETCH_REQUEST";
+export const FETCH_REQUEST = "request/FETCH_REQUEST";
 export type FETCH_REQUEST = typeof FETCH_REQUEST;
-export const FETCH_SUCCESS = "examples/request/FETCH_SUCCESS";
+export const FETCH_SUCCESS = "request/FETCH_SUCCESS";
 export type FETCH_SUCCESS = typeof FETCH_SUCCESS;
-export const FETCH_FAILURE = "examples/request/FETCH_FAILURE";
+export const FETCH_FAILURE = "request/FETCH_FAILURE";
 export type FETCH_FAILURE = typeof FETCH_FAILURE;
 export const Actions = {
   FETCH_REQUEST,
