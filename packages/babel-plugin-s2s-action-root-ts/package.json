@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-s2s-action-root-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generate action root",
   "main": "lib/index.js",
   "files": [
@@ -17,6 +17,5 @@
     "globby": "^7.1.1",
     "s2s-utils": "^0.6.0",
     "uppercamelcase": "^3.0.0"
-  },
-  "devDependencies": {}
+  }
 }
