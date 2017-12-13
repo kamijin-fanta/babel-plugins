@@ -9,3 +9,17 @@ pluginTester({
     removePrefix: 'packages/babel-plugin-s2s-action-types-ts/src/__fixtures__/',
   },
 });
+
+pluginTester({
+  plugin,
+  pluginOptions: {
+    usePrefix: false,
+  },
+  snapshot: true,
+  tests: [
+    {
+      title: 'usePrefix: false',
+      code: `export type Action = Foo`,
+    },
+  ],
+});

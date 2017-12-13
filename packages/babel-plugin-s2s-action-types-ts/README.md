@@ -25,25 +25,20 @@ export type Action = Foo | Bar;
 
 ```typescript
 export type Action = Foo | Bar;
+
 export interface Foo {
-  type: FOO;
+  type: Actions.Foo;
 }
 export interface Bar {
-  type: BAR;
+  type: Actions.Bar;
   payload: string;
 }
 
-
 /***** Do not edit below this line *****/
-
-export const FOO = "container/example/FOO";
-export type FOO = typeof FOO;
-export const BAR = "container/example/BAR";
-export type BAR = typeof BAR;
-export const Actions = {
-  FOO,
-  BAR
-};
+export const enum Actions {
+  Foo = "container/example/Foo",
+  Bar = "container/example/Bar",
+}
 ```
 
 ### Request/Success/Failure pattern
@@ -60,27 +55,21 @@ export type Action = FetchRequest;
 export type Action = FetchRequest;
 
 export interface FetchRequest {
-  type: FETCH_REQUEST;
+  type: Actions.FetchRequest;
 }
 export interface FetchSuccess {
-  type: FETCH_SUCCESS;
+  type: Actions.FetchSuccess;
 }
 export interface FetchFailure {
-  type: FETCH_FAILURE;
+  type: Actions.FetchFailure;
 }
 
 /***** Do not edit below this line *****/
-export const FETCH_REQUEST = "examples/request/FETCH_REQUEST";
-export type FETCH_REQUEST = typeof FETCH_REQUEST;
-export const FETCH_SUCCESS = "examples/request/FETCH_SUCCESS";
-export type FETCH_SUCCESS = typeof FETCH_SUCCESS;
-export const FETCH_FAILURE = "examples/request/FETCH_FAILURE";
-export type FETCH_FAILURE = typeof FETCH_FAILURE;
-export const Actions = {
-  FETCH_REQUEST,
-  FETCH_SUCCESS,
-  FETCH_FAILURE
-};
+export const enum Actions {
+  FetchRequest = "examples/request/FetchRequest",
+  FetchSuccess = "examples/request/FetchSuccess",
+  FetchFailure = "examples/request/FetchFailure",
+}
 ```
 
 

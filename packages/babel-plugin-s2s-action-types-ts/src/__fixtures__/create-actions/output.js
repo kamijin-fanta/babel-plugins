@@ -1,18 +1,14 @@
 export type Action = Fetch | Response;
 
 export interface Fetch {
-  type: FETCH;
+  type: Actions.Fetch;
 }
 export interface Response {
-  type: RESPONSE;
+  type: Actions.Response;
 }
 
 /***** Do not edit below this line *****/
-export const FETCH = "create-actions/FETCH";
-export type FETCH = typeof FETCH;
-export const RESPONSE = "create-actions/RESPONSE";
-export type RESPONSE = typeof RESPONSE;
-export const Actions = {
-  FETCH,
-  RESPONSE
-};
+export const enum Actions {
+  Fetch = "create-actions/Fetch",
+  Response = "create-actions/Response",
+}

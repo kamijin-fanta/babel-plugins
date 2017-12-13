@@ -1,7 +1,5 @@
 import plugin from './index';
 import pluginTester from 'babel-plugin-tester';
-import path from 'path';
-import fs from 'fs';
 
 pluginTester({
   plugin,
@@ -25,6 +23,24 @@ pluginTester({
         output: 'packages/babel-plugin-s2s-action-root-ts/src/__fixtures__/basic/types/action.ts',
       },
       snapshot: true,
+    },
+    {
+      title: 'option error(input)',
+      code: 'empty',
+      output: 'empty',
+      error: 'require input option',
+      pluginOptions: {
+        output: '.',
+      },
+    },
+    {
+      title: 'option error(output)',
+      code: 'empty',
+      output: 'empty',
+      error: 'require output option',
+      pluginOptions: {
+        input: '.',
+      },
     },
   ],
 });

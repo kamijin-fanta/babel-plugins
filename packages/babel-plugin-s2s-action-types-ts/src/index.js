@@ -3,7 +3,7 @@ import {relative, join, dirname} from 'path';
 import slash from 'slash';
 import * as types from '@babel/types';
 import template from '@babel/template';
-import snakeCase from 'lodash.snakecase'
+import snakeCase from 'lodash.snakecase';
 
 const babylonOpts = {sourceType: 'module', plugins: ['typescript']};
 const wrapTemp = (tmpl) => template(tmpl, babylonOpts);
@@ -14,7 +14,6 @@ const assert = require('assert');
 const COMMENTS = '**** Do not edit below this line ****';
 
 const builders = {
-  constant: wrapTemp(`export const NAME = VALUE;`),
   typeAlias: wrapTemp(`export type NAME = typeof VALUE;`),
   comments: (str) => ({
     type: 'CommentBlock',
@@ -41,7 +40,10 @@ function interfaceGen(name, fields) {
       types.Identifier(key),
       types.TSTypeAnnotation(
         types.TSTypeReference(
-          types.Identifier(typeName)
+          types.TSQualifiedName(
+            types.Identifier('Actions'),
+            types.Identifier(typeName)
+          )
         )
       )
     )
@@ -58,11 +60,6 @@ function interfaceGen(name, fields) {
     interfaceDeclaration,
     [],
   );
-}
-
-// ///// utils
-function toTypeName(str) {
-  return snakeCase(str).toUpperCase();
 }
 
 // ///// plugin
@@ -120,8 +117,8 @@ export default (babel) => {
                   .filter((c) => c.value !== COMMENTS);
               }
             },
-            VariableDeclarator(path) { // Like: export const FUGA = "FUGA";
-              // ignore
+            TSEnumDeclaration(path) {
+              // ignore const enum
             },
           });
 
@@ -130,42 +127,25 @@ export default (babel) => {
           const notFoundInterfaces = Array.from(typeNameSet).filter((name) => !intMap.has(name));
           const additionalInterfaces = notFoundInterfaces.map((name) =>
             [name, interfaceGen(name, [
-              ['type', toTypeName(name)],
+              ['type', name],
             ])]
           );
           additionalInterfaces.forEach(([name, int]) => intMap.set(name, int));
 
           const interfaces = Array.from(typeNameSet).map((name) => intMap.get(name));
 
-          const consts = Array.from(typeNameSet).map((name) => {
-            return [
-              builders.constant({
-                NAME: types.Identifier(toTypeName(name)),
-                VALUE: types.StringLiteral(prefix + toTypeName(name)),
-              }),
-              builders.typeAlias({
-                NAME: types.Identifier(toTypeName(name)),
-                VALUE: types.Identifier(toTypeName(name)),
-              }),
-            ];
+          const enumMembers = Array.from(typeNameSet).map((name) => {
+            return types.TSEnumMember(types.Identifier(name), types.StringLiteral(prefix + name));
           });
-          const flattenConsts = [].concat(...consts);
-
-
-          // add comments last interface line
-          if (flattenConsts.length) {
-            flattenConsts[0].leadingComments = [ // or trailingComments?
-              builders.comments(COMMENTS),
-            ];
-          }
-
-          const actionsMembers = Array.from(typeNameSet).map((name) => {
-            const n = types.identifier(toTypeName(name));
-            return types.ObjectProperty(n, n, undefined, true);
-          });
-          const actions = builders.actions({
-            IN: types.ObjectExpression(actionsMembers),
-          });
+          const constEnum = types.TSEnumDeclaration(
+            types.Identifier('Actions'),
+            enumMembers,
+          );
+          constEnum.const = true;
+          const exportEnum = types.ExportNamedDeclaration(constEnum, []);
+          exportEnum.leadingComments = [
+            builders.comments(COMMENTS),
+          ];
 
           if (imports.length) {
             imports.push(types.Noop());
@@ -177,8 +157,7 @@ export default (babel) => {
             ...actionsNode,
             types.noop(),
             ...interfaces,
-            ...flattenConsts,
-            actions,
+            exportEnum,
           ];
         },
       },

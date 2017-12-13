@@ -1,9 +1,9 @@
 export type Action = Foo | Bar | Fuga;
 export interface Foo {
-  type: FOO;
+  type: Actions.Foo;
 }
 export interface Bar {
-  type: BAR;
+  type: Actions.Bar;
   payload: string;
 }
 

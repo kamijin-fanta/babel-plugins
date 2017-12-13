@@ -1,25 +1,19 @@
 export type Action = Foo | Bar | Fuga;
 
 export interface Foo {
-  type: FOO;
+  type: Actions.Foo;
 }
 export interface Bar {
-  type: BAR;
+  type: Actions.Bar;
   payload: string;
 }
 export interface Fuga {
-  type: FUGA;
+  type: Actions.Fuga;
 }
 
 /***** Do not edit below this line *****/
-export const FOO = "add-action/FOO";
-export type FOO = typeof FOO;
-export const BAR = "add-action/BAR";
-export type BAR = typeof BAR;
-export const FUGA = "add-action/FUGA";
-export type FUGA = typeof FUGA;
-export const Actions = {
-  FOO,
-  BAR,
-  FUGA
-};
+export const enum Actions {
+  Foo = "add-action/Foo",
+  Bar = "add-action/Bar",
+  Fuga = "add-action/Fuga",
+}

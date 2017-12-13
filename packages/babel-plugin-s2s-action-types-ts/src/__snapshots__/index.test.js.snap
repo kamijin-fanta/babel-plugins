@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`usePrefix: false 1`] = `
+"
+export type Action = Foo
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export type Action = Foo;
+
+export interface Foo {
+  type: Actions.Foo;
+}
+
+/***** Do not edit below this line *****/
+export const enum Actions {
+  Foo = \\"Foo\\",
+}
+"
+`;
