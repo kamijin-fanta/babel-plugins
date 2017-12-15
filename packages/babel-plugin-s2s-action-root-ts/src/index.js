@@ -3,13 +3,24 @@ import * as types from '@babel/types';
 import template from '@babel/template';
 import globby from 'globby';
 import upperCamelCase from 'uppercamelcase';
-import {getImportPath, getParentDirName} from 's2s-utils';
+import {getParentDirName} from 's2s-utils';
+import path from 'path';
+import normalizePathSeq from 'normalize-path-sep';
+import slash from 'slash';
 
 const babylonOpts = {sourceType: 'module', plugins: ['typescript']};
 const wrapTemp = (tmpl) => template(tmpl, babylonOpts);
-// function wrapTemp (tmpl) {
-//   return template(tmpl, babylonOpts);
-// }
+
+export function getImportPath(from, to) {
+  const relative = slash(path.relative(
+    path.dirname(normalizePathSeq(from)), normalizePathSeq(to)
+  ));
+  const formatted = relative.replace(/\.\w+$/, '');
+  if (!/^\.\.?/.test(formatted)) {
+    return `./${formatted}`;
+  }
+  return formatted;
+}
 
 // ///// templates
 
