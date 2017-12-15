@@ -17,21 +17,21 @@ pluginTester({
       title: 'usePrefix: false',
       code: `
         import External from 'external';
-        export type Action = Hoge | Fuga;
+        export type Action = Hoge | PiyoPiyo;
         
         export interface Hoge {
           type: Actions.Hoge;
           key: number;
           data: External;
         }
-        export interface Fuga {
-          type: Actions.Fuga;
+        export interface PiyoPiyo {
+          type: Actions.PiyoPiyo;
         }
         
         /***** Do not edit below this line *****/
         export const enum Actions {
           Hoge = 'containers/Hoge',
-          Fuga = 'containers/Fuga',
+          PiyoPiyo = 'containers/PiyoPiyo',
         }
       `,
     },

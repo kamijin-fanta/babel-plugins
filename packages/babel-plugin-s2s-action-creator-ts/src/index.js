@@ -1,6 +1,7 @@
 import syntaxTypeScript from '@babel/plugin-syntax-typescript';
 import path from 'path';
 import * as types from '@babel/types';
+import camelCase from 'lodash.camelcase';
 
 // ///// plugin
 
@@ -33,7 +34,7 @@ export default (babel) => {
               .filter((f) => f.key.name !== 'type');
 
             let fnc = types.FunctionDeclaration( // export function FUGA
-              types.Identifier(key.toLowerCase()), // function name
+              types.Identifier(camelCase(key)), // function name
               ignoreTypeFileds.map((f) => { // args
                 let id = types.Identifier(f.key.name);
                 id.typeAnnotation = f.typeAnnotation;
