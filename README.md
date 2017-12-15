@@ -15,6 +15,10 @@ https://github.com/akameco/s2s/tree/master/packages/babel-plugin-s2s-action-type
 
 https://github.com/akameco/s2s/tree/master/packages/babel-plugin-s2s-action-creater のTSバージョン
 
+### [babel-plugin-s2s-some-root-ts](./packages/babel-plugin-s2s-some-root-ts) [![](https://img.shields.io/npm/v/babel-plugin-s2s-some-root-ts.svg)](https://www.npmjs.com/package/babel-plugin-s2s-some-root-ts) [![dependencies Status](https://david-dm.org/kamijin-fanta/babel-plugins/status.svg?path=packages/babel-plugin-s2s-some-root-ts)](https://david-dm.org/kamijin-fanta/babel-plugins?path=packages/babel-plugin-s2s-some-root-ts)
+
+ディレクトリを検索し、rootファイルを作成する
+
 
 ## develop
 

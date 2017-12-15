@@ -1,0 +1,23 @@
+{
+  "name": "babel-plugin-s2s-some-root-ts",
+  "version": "1.0.0",
+  "description": "generate root object",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [],
+  "author": "kamijin_fanta <kamijin@live.jp>",
+  "repository": "kamijin-fanta/babel-plugins",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/plugin-syntax-typescript": "^7.0.0-beta.35",
+    "@babel/template": "^7.0.0-beta.35",
+    "@babel/types": "^7.0.0-beta.35",
+    "globby": "^7.1.1",
+    "normalize-path-sep": "^0.1.1",
+    "s2s-utils": "^0.6.0",
+    "slash": "^1.0.0",
+    "uppercamelcase": "^3.0.0"
+  }
+}
