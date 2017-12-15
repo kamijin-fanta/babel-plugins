@@ -32,39 +32,36 @@ export default (babel) => {
             let ignoreTypeFileds = fileds
               .filter((f) => f.key.name !== 'type');
 
-            let fnc = types.ExportNamedDeclaration(
-              types.FunctionDeclaration( // export function FUGA
-                types.Identifier(key.toLowerCase()), // function name
-                ignoreTypeFileds.map((f) => { // args
-                  let id = types.Identifier(f.key.name);
-                  id.typeAnnotation = f.typeAnnotation;
-                  return id;
-                }),
-                types.BlockStatement([ // statements
-                  types.ReturnStatement(
-                    types.ObjectExpression([ // fileds
-                      types.ObjectProperty(
-                        types.Identifier('type'),
-                        types.MemberExpression(types.Identifier('Actions'), types.Identifier(key)),
-                      ),
-                      ...ignoreTypeFileds.map((f) => {
-                        let obj = types.ObjectProperty(
-                          f.key,
-                          types.Identifier(f.key.name)
-                        );
-                        obj.shorthand = true;
-                        return obj;
-                      }),
-                    ])
-                  ),
-                ]),
-              ),
-              [],
+            let fnc = types.FunctionDeclaration( // export function FUGA
+              types.Identifier(key.toLowerCase()), // function name
+              ignoreTypeFileds.map((f) => { // args
+                let id = types.Identifier(f.key.name);
+                id.typeAnnotation = f.typeAnnotation;
+                return id;
+              }),
+              types.BlockStatement([ // statements
+                types.ReturnStatement(
+                  types.ObjectExpression([ // fileds
+                    types.ObjectProperty(
+                      types.Identifier('type'),
+                      types.MemberExpression(types.Identifier('Actions'), types.Identifier(key)),
+                    ),
+                    ...ignoreTypeFileds.map((f) => {
+                      let obj = types.ObjectProperty(
+                        f.key,
+                        types.Identifier(f.key.name)
+                      );
+                      obj.shorthand = true;
+                      return obj;
+                    }),
+                  ])
+                ),
+              ]),
             );
             fnc.returnType = types.TSTypeAnnotation(
               types.TSTypeReference(types.Identifier(key))
             );
-            return fnc;
+            return types.ExportNamedDeclaration(fnc, []);
           });
 
           const importSpecs = [['Actions'], ...Array.from(existInterface)].map(([key, fileds]) => {
