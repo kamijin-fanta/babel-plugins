@@ -7,6 +7,9 @@ import {getImportPath, getParentDirName} from 's2s-utils';
 
 const babylonOpts = {sourceType: 'module', plugins: ['typescript']};
 const wrapTemp = (tmpl) => template(tmpl, babylonOpts);
+// function wrapTemp (tmpl) {
+//   return template(tmpl, babylonOpts);
+// }
 
 // ///// templates
 
