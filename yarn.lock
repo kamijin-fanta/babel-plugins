@@ -18,6 +18,14 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@babel/code-frame@7.0.0-beta.38":
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0-beta.38.tgz#c0af5930617e55e050336838e3a3670983b0b2b2"
+  dependencies:
+    chalk "^2.0.0"
+    esutils "^2.0.2"
+    js-tokens "^3.0.0"
+
 "@babel/core@7.0.0-beta.35":
   version "7.0.0-beta.35"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.0.0-beta.35.tgz#69dc61d317c73177b91fdc4432619f997155b60f"
@@ -234,8 +242,8 @@
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-catch-binding/-/plugin-syntax-optional-catch-binding-7.0.0-beta.35.tgz#a2451f5dd30f858d31ec55ce12602f43d2cf5cdc"
 
 "@babel/plugin-syntax-typescript@^7.0.0-beta.35":
-  version "7.0.0-beta.35"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-beta.35.tgz#f47c5dea85d3bfa992de9e3070b6b19be9c42a0e"
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-beta.38.tgz#c62b1148da53a071ac8e8013797d2783eefab631"
 
 "@babel/plugin-transform-arrow-functions@7.0.0-beta.35":
   version "7.0.0-beta.35"
@@ -455,13 +463,22 @@
     babylon "7.0.0-beta.31"
     lodash "^4.2.0"
 
-"@babel/template@7.0.0-beta.35", "@babel/template@^7.0.0-beta.35":
+"@babel/template@7.0.0-beta.35":
   version "7.0.0-beta.35"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.0.0-beta.35.tgz#459230417f51c29401cf71162aeeff6cef2bcca7"
   dependencies:
     "@babel/code-frame" "7.0.0-beta.35"
     "@babel/types" "7.0.0-beta.35"
     babylon "7.0.0-beta.35"
+    lodash "^4.2.0"
+
+"@babel/template@^7.0.0-beta.35":
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.0.0-beta.38.tgz#8a2d403a01da320beb8333dc6403500fa79e8597"
+  dependencies:
+    "@babel/code-frame" "7.0.0-beta.38"
+    "@babel/types" "7.0.0-beta.38"
+    babylon "7.0.0-beta.38"
     lodash "^4.2.0"
 
 "@babel/traverse@7.0.0-beta.31":
@@ -498,9 +515,17 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@babel/types@7.0.0-beta.35", "@babel/types@^7.0.0-beta.35":
+"@babel/types@7.0.0-beta.35":
   version "7.0.0-beta.35"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.0.0-beta.35.tgz#cf933a9a9a38484ca724b335b88d83726d5ab960"
+  dependencies:
+    esutils "^2.0.2"
+    lodash "^4.2.0"
+    to-fast-properties "^2.0.0"
+
+"@babel/types@7.0.0-beta.38", "@babel/types@^7.0.0-beta.35":
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.0.0-beta.38.tgz#2ce2443f7dc6ad535a67db4940cbd34e64035a6f"
   dependencies:
     esutils "^2.0.2"
     lodash "^4.2.0"
@@ -885,6 +910,10 @@ babylon@7.0.0-beta.31:
 babylon@7.0.0-beta.35:
   version "7.0.0-beta.35"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.35.tgz#9f9e609ed50c28d4333f545b373a381b47e9e6ed"
+
+babylon@7.0.0-beta.38:
+  version "7.0.0-beta.38"
+  resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.38.tgz#9b3a33e571a47464a2d20cb9dd5a570f00e3f996"
 
 babylon@^6.18.0:
   version "6.18.0"
