@@ -21,5 +21,9 @@ pluginTester({
       title: 'usePrefix: false',
       code: `export type Action = Foo`,
     },
+    {
+      title: 'empty Actions',
+      code: `/* empty */`,
+    },
   ],
 });

@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`empty Actions 1`] = `
+"
+/* empty */
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* empty */
+export type Action = ;
+
+/***** Do not edit below this line *****/
+export const enum Actions {}
+"
+`;
+
 exports[`usePrefix: false 1`] = `
 "
 export type Action = Foo

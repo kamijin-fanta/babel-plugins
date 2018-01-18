@@ -52,7 +52,7 @@ export type Action = FetchRequest;
 #### OUT:
 
 ```typescript
-export type Action = FetchRequest;
+export type Action = FetchRequest | FetchSuccess | FetchFailure;
 
 export interface FetchRequest {
   type: Actions.FetchRequest;

@@ -73,17 +73,16 @@ export default (babel) => {
           const {file, opts: {usePrefix = true, removePrefix = ''}} = state;
 
           const imports = [];
-          let actionsNode = [];
-          const typeNameSet = new Set();
+          const typeNameSet = [];
           const intMap = new Map(); // has interfaces
           const prefix = usePrefix ? getPrefix(file, removePrefix) : '';
 
           function addTypes(typeName) {
             const name = typeName.name;
-            typeNameSet.add(name);
+            typeNameSet.push(name);
             if (name.endsWith('Request')) {
-              typeNameSet.add(name.replace(/Request$/, 'Success'));
-              typeNameSet.add(name.replace(/Request$/, 'Failure'));
+              typeNameSet.push(name.replace(/Request$/, 'Success'));
+              typeNameSet.push(name.replace(/Request$/, 'Failure'));
             }
           }
 
@@ -94,7 +93,6 @@ export default (babel) => {
             },
             TSTypeAliasDeclaration(path) { // Like: export type hoge = Fuga; or typeof FUGA
               if (path.node.id.name === 'Action') {
-                actionsNode.push(path.parent);
                 switch (path.node.typeAnnotation.type) {
                   case 'TSUnionType':
                     path.node.typeAnnotation.types
@@ -121,9 +119,20 @@ export default (babel) => {
             },
           });
 
+          // replace actionNode
+          const actionsNode = types.ExportNamedDeclaration(
+            types.TSTypeAliasDeclaration(
+              types.Identifier('Action'),
+              undefined,
+              types.TSUnionType(
+                typeNameSet.map((type) => types.TSTypeReference(types.Identifier(type)))
+              )
+            ),
+            []
+          );
 
           // add additionalInterfaces to interfaces map
-          const notFoundInterfaces = Array.from(typeNameSet).filter((name) => !intMap.has(name));
+          const notFoundInterfaces = typeNameSet.filter((name) => !intMap.has(name));
           const additionalInterfaces = notFoundInterfaces.map((name) =>
             [name, interfaceGen(name, [
               ['type', name],
@@ -131,9 +140,9 @@ export default (babel) => {
           );
           additionalInterfaces.forEach(([name, int]) => intMap.set(name, int));
 
-          const interfaces = Array.from(typeNameSet).map((name) => intMap.get(name));
+          const interfaces = typeNameSet.map((name) => intMap.get(name));
 
-          const enumMembers = Array.from(typeNameSet).map((name) => {
+          const enumMembers = typeNameSet.map((name) => {
             return types.TSEnumMember(types.Identifier(name), types.StringLiteral(prefix + name));
           });
           const constEnum = types.TSEnumDeclaration(
@@ -153,7 +162,7 @@ export default (babel) => {
           // modify node tree
           programPath.node.body = [
             ...imports,
-            ...actionsNode,
+            actionsNode,
             types.noop(),
             ...interfaces,
             exportEnum,
