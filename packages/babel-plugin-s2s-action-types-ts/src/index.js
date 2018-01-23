@@ -73,16 +73,16 @@ export default (babel) => {
           const {file, opts: {usePrefix = true, removePrefix = ''}} = state;
 
           const imports = [];
-          const typeNameSet = [];
+          const typeNameSet = new Set();
           const intMap = new Map(); // has interfaces
           const prefix = usePrefix ? getPrefix(file, removePrefix) : '';
 
           function addTypes(typeName) {
             const name = typeName.name;
-            typeNameSet.push(name);
+            typeNameSet.add(name);
             if (name.endsWith('Request')) {
-              typeNameSet.push(name.replace(/Request$/, 'Success'));
-              typeNameSet.push(name.replace(/Request$/, 'Failure'));
+              typeNameSet.add(name.replace(/Request$/, 'Success'));
+              typeNameSet.add(name.replace(/Request$/, 'Failure'));
             }
           }
 
@@ -125,14 +125,14 @@ export default (babel) => {
               types.Identifier('Action'),
               undefined,
               types.TSUnionType(
-                typeNameSet.map((type) => types.TSTypeReference(types.Identifier(type)))
+                Array.from(typeNameSet).map((type) => types.TSTypeReference(types.Identifier(type)))
               )
             ),
             []
           );
 
           // add additionalInterfaces to interfaces map
-          const notFoundInterfaces = typeNameSet.filter((name) => !intMap.has(name));
+          const notFoundInterfaces = Array.from(typeNameSet).filter((name) => !intMap.has(name));
           const additionalInterfaces = notFoundInterfaces.map((name) =>
             [name, interfaceGen(name, [
               ['type', name],
@@ -140,9 +140,9 @@ export default (babel) => {
           );
           additionalInterfaces.forEach(([name, int]) => intMap.set(name, int));
 
-          const interfaces = typeNameSet.map((name) => intMap.get(name));
+          const interfaces = Array.from(typeNameSet).map((name) => intMap.get(name));
 
-          const enumMembers = typeNameSet.map((name) => {
+          const enumMembers = Array.from(typeNameSet).map((name) => {
             return types.TSEnumMember(types.Identifier(name), types.StringLiteral(prefix + name));
           });
           const constEnum = types.TSEnumDeclaration(

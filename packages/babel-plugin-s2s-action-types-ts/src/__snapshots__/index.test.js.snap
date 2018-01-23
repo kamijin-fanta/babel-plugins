@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`duplicate 1`] = `
+"
+export type Action = FooRequest | FooSuccess;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export type Action = FooRequest | FooSuccess | FooFailure;
+
+export interface FooRequest {
+  type: Actions.FooRequest;
+}
+export interface FooSuccess {
+  type: Actions.FooSuccess;
+}
+export interface FooFailure {
+  type: Actions.FooFailure;
+}
+
+/***** Do not edit below this line *****/
+export const enum Actions {
+  FooRequest = \\"FooRequest\\",
+  FooSuccess = \\"FooSuccess\\",
+  FooFailure = \\"FooFailure\\",
+}
+"
+`;
+
 exports[`empty Actions 1`] = `
 "
 /* empty */

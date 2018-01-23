@@ -25,5 +25,9 @@ pluginTester({
       title: 'empty Actions',
       code: `/* empty */`,
     },
+    {
+      title: 'duplicate',
+      code: `export type Action = FooRequest | FooSuccess;`,
+    },
   ],
 });
