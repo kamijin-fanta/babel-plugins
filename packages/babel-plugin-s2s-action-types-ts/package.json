@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-s2s-action-types-ts",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "generate action types",
   "main": "lib/index.js",
   "files": [
